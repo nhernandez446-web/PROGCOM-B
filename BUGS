@@ -5,14 +5,14 @@ def menu():
     print("3. Salir")
 
 def regi_bug(bugs):
-    desc= input("Describe el error: ")
-    priority= input("Indica la prioridad (Alta, Media, Baja): ")
+    desc = input("Describe el error: ")
+    priority = input("Indica la prioridad (Alta, Media, Baja): ")
     
-    new = {
+    nuevo = {
         "descripcion": desc,
-        "prioridad": priority.lower
+        "prioridad": priority.lower()  
     }
-    bugs.append(new)
+    bugs.append(nuevo)
     print("Error registrado.")
 
 def ver_bugs(bugs):
@@ -22,7 +22,8 @@ def ver_bugs(bugs):
         print("\n--- LISTA DE ERRORES ACTUALES ---")
         for i in range(len(bugs)):
             bug_actual = bugs[i]
-            print(f"Bug {i+1}: {bug_actual['desc']} | Prioridad: {bug_actual['priority']}")
+           
+            print(f"Bug {i+1}: {bug_actual['descripcion']} | Prioridad: {bug_actual['prioridad']}")
 
 bugs = []
 
@@ -31,12 +32,12 @@ while True:
     opcion = input("Elige una opción (1, 2 o 3): ")
     
     match opcion:
-        case 1:
+        case "1":  
             regi_bug(bugs)
-        case 2:
+        case "2":  
             ver_bugs(bugs)
-        case 3:
+        case "3": 
             print("Saliendo del programa...")
             break
-        case_:
-           print("Opción inválida.")
+        case _:
+            print("Opción inválida.")
