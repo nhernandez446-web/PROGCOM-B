@@ -1,0 +1,48 @@
+import random #Un import que permite codigos ams complejos. Es decir, que permite cosas locas.
+
+rule = {
+    "Rock": ["Scissors", "Lizard"],
+    "Paper": ["Rock", "Spock"],
+    "Scissors": ["Paper", "Lizard"],
+    "Lizard": ["Spock", "Paper"],
+    "Spock": ["Scissors", "Rock"]
+}
+
+option = list(rule.keys()) #Función List permite onvertir otras estructuras de datos a listas que Python lee
+
+win = 0
+lose = 0
+tie = 0
+
+print("=== ROCK, PAPER, SCISSORS, LIZARD, SPOCK ===")
+print("Escribe 'quit' en cualquier momento para terminar.\n")
+
+while True:
+    print("-" * 40) #Mas eficiente que "------------------------------------"
+    print(f"Marcador | Wins: {win} | Loses: {lose} | Ties: {tie}")
+    
+    chose = input("Elige (Rock, Paper, Scissors, Lizard, Spock): ").strip() # .strip() limpia todo los bordes del texto, es decir quita espacios sin importar lo que ponga el usuario
+    
+    if chose.lower() == "quit": #.lower() convierte todo texto en letras minusculas para simplificar variables
+        print("\nGAME OVER.")
+        print(f"Wins: {win} | Loses: {lose} | Ties: {tie}")
+        break
+
+    user = chose.capitalize() #.capitalize() convierte el primer carácter de una cadena en mayúscula, deja el resto en minusculas
+    
+    if user not in option:
+        print("ERROR. NOT.ELIGIBLE.OPTION")
+        continue
+
+    machine = random.choice(option) #random.value(value2) elije una de las opciones al azar. 
+    print(f"BOT: {machine}")
+
+    if user == machine:
+        print("NO WINNERS. TIE")
+        tie += 1
+    elif machine in rule[user]:
+        print(f"YOU WIN! {user} > {machine}")
+        win += 1
+    else:
+        print(f"YOU LOSE. {user} < {machine}")
+        lose += 1
