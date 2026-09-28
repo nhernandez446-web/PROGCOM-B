@@ -1,0 +1,91 @@
+agenda = {}
+
+while True:
+    print("\n1 Ver")
+    print("2 Agregar")
+    print("3 Buscar")
+    print("4 Eliminar")
+    print("5 Cantidad")
+    print("6 Primera")
+    print("7 Ultima")
+    print("8 Ordenar")
+    print("9 Salir")
+
+    op = input("Opcion: ")
+
+    if op == "1":
+        if len(agenda) == 0:
+            print("Vacia")
+        else:
+            for k in agenda:
+                print(k, ":", agenda[k])
+
+    if op == "2":
+        hora = input("Hora: ")
+        act = input("Actividad: ")
+        agenda[hora] = act
+        print("Guardado")
+
+    if op == "3":
+        hora = input("Hora a buscar: ")
+        if hora in agenda:
+            print("Si esta:", agenda[hora])
+        else:
+            print("No esta")
+
+    if op == "4":
+        hora = input("Hora a borrar: ")
+        if hora in agenda:
+            del agenda[hora]
+            print("Borrado")
+        else:
+            print("No existe")
+
+    if op == "5":
+        print("Tienes", len(agenda), "actividades")
+
+    if op == "6":
+        if len(agenda) == 0:
+            print("Vacia")
+        else:
+            for k in agenda:
+                print("Primera:", k, agenda[k])
+                break
+
+    if op == "7":
+        if len(agenda) == 0:
+            print("Vacia")
+        else:
+            ultimo = ""
+            for k in agenda:
+                ultimo = k
+            print("Ultima:", ultimo, agenda[ultimo])
+
+    if op == "8":
+        # ordenar a mano
+        lista = []
+        for k in agenda:
+            lista.append(k)
+
+        # burbuja
+        i = 0
+        while i < len(lista):
+            j = i + 1
+            while j < len(lista):
+                if lista[i] > lista[j]:
+                    temp = lista[i]
+                    lista[i] = lista[j]
+                    lista[j] = temp
+                j = j + 1
+            i = i + 1
+
+        nuevo = {}
+        for k in lista:
+            nuevo[k] = agenda[k]
+        agenda = nuevo
+        print("Ordenada")
+        for k in agenda:
+            print(k, ":", agenda[k])
+
+    if op == "9":
+        break
