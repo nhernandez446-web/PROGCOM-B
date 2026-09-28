@@ -1,0 +1,30 @@
+sal=0
+rep=0
+agent=[]
+def menu():
+  print("{[#----BIENVENIDO A SU AGENDA----#]}\n")
+  print("{[#------Opciones------#]}\n")
+  print("{[1] Ver Agenda}")
+  print("{[2] Agregar Actividad}")
+  print("{[3] Buscar Actividad}")
+  print("{[4] Eliminar Actividad}")
+  print("{[5] Mostrar Cantidad de Actividades}")
+  print("{[6] Ver Primera Actividad}")
+  print("{[7] Ver Última Actividad}")
+  print("{[8] Ordenar Actividad}\n")
+  print("{[9] Salir}")
+
+while rep==0:
+  menu()
+  rep=+1
+  op=int(input(""))
+  match op:
+    case 1:
+      print("\nTu agenda: ",agent)
+      rep=0
+    case 2:
+      ad=str(input("\nIngresa una Actividad: "))
+      agent.append(ad)
+      rep=0
+    case 3:
+      print("\n")
